@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>문의하기 | 제천루하스 더카운티214</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/form.css">
+</head>
+<body>
+      <!-- ✅ 헤더 컴포넌트 -->
+       
+  <div id="header-include"></div>
+  <main class="main-section">
+  <div class="form-container">
+    <h2>관심고객 등록 및 문의하기</h2>
+    <form name="contact" method="POST" data-netlify="true" id="contact-form">
+      <input type="hidden" name="form-name" value="contact" />
+
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요" required>
+
+
+      <label for="phone">휴대폰 번호</label>
+      <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+
+
+      <label for="message">문의사항</label>
+      <textarea id="message" name="message" rows="4" placeholder="위치,가격,대출 등 문의내용을 자유롭게 써주세요"></textarea>
+
+
+      <div class="privacy-check">
+        <label>
+          <input type="checkbox" name="agree" required />
+          개인정보취급방침에 동의합니다.
+        </label>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="submit-btn">등록하기</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ✅ 제출 완료 모달 -->
+  <div id="success-modal" class="modal hidden">
+    <div class="modal-content">
+      <p>정상적으로 등록되었습니다. 감사합니다!</p>
+      <button onclick="closeModal()">닫기</button>
+    </div>
+  </div>
+
+  <!-- ✅ 개인정보 수집 안내 -->
+  <div class="form-container privacy-table">
+    <h2>개인정보 수집 및 이용 안내</h2>
+    <p>당사는 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>수집하는 개인정보 항목</th>
+          <th>목적</th>
+          <th>보유기간</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>이름, 휴대폰번호</td>
+          <td>분양정보 안내 및 분양상담 등 서비스</td>
+          <td rowspan="2">6개월</td>
+        </tr>
+        <tr>
+          <td>접속로그</td>
+          <td>방문자 통계분석</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="privacy-note">
+      ※ 개인정보보호법 제15조에 따라 수집 및 이용에 동의하지 않을 수 있으나, 동의하지 않을 경우 일부 서비스 이용에 제한이 있을 수 있습니다.
+    </p>
+  </div>
+</main>
+  <!-- ✅ 스크립트: 제출 후 모달 표시 -->
+  <script>
+    const form = document.getElementById("contact-form");
+    const modal = document.getElementById("success-modal");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch("/", {
+        method: "POST",
+        body: formData
+      })
+      .then(() => {
+        modal.classList.remove("hidden");
+        form.reset();
+      })
+      .catch(() => {
+        alert("제출 중 오류가 발생했습니다. 다시 시도해주세요.");
+      });
+    });
+
+    function closeModal() {
+      modal.classList.add("hidden");
+    }
+  </script>
+
+  <!-- ✅ 푸터 컴포넌트 -->
+  <div id="footer-include"></div>
+
+  <!-- ✅ 공통 컴포넌트 JS 삽입 -->
+  <script>
+    async function loadComponent(id, path) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error("Fetch failed");
+        const html = await res.text();
+        document.getElementById(id).innerHTML = html;
+      } catch (err) {
+        console.error(`${path} 불러오기 실패:`, err);
+      }
+    }
+
+    loadComponent("header-include", "/components/header.html");
+    loadComponent("footer-include", "/components/footer.html");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-item').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

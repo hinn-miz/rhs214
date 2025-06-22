@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>제천루하스 더카운티214</title>
+
+  <!-- 스타일 및 폰트 -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'ShillaCultureB';
+      src: url('/assets/fonts/Shilla_Culture(B).ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .hero {
+      position: relative;
+      height: 90vh;
+      background: url('/assets/images/hero.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      color: white;
+      text-align: center;
+      max-width: 90vw;
+      white-space: nowrap;
+    }
+    .hero h1 {
+    margin-bottom: 0.2rem;
+    }
+
+    .hero .subtitle {
+       margin-top: 0;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-family: 'ShillaCultureB', sans-serif;
+      font-size: 5rem;
+      margin-bottom: 0.25rem;
+      font-weight: normal;
+      color: #fff;
+      animation: fadeUp 1s ease-out forwards;
+    }
+
+    .hero .subtitle {
+      font-family: 'ShillaCultureB', sans-serif;
+      font-size: 3rem;
+      font-weight: 400;
+      color: #fff;
+      opacity: 0;
+      animation: fadeUp 1s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    .hero .subtext {
+      font-size: 1.6rem;
+      margin-top: 1rem;
+      color: #fff;
+      opacity: 0;
+      animation: fadeUp 1s ease-out forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .hero .subtitle {
+        font-size: 2rem;
+      }
+      .hero .subtext {
+        font-size: 1.3rem;
+      }
+    }
+
+    .showcase-fullscreen {
+      width: 100%;
+      padding: 3rem 1rem;
+      box-sizing: border-box;
+    }
+
+    .showcase-image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .showcase-image-wrapper img {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s ease;
+}
+
+
+
+    .fade-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.2s; }
+    .delay-2 { transition-delay: 0.4s; }
+    .delay-3 { transition-delay: 0.6s; }
+
+    .desktop-only { display: block; }
+    .mobile-only { display: none; }
+
+    @media (max-width: 768px) {
+      .desktop-only { display: none; }
+      .mobile-only { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 헤더 불러오기 -->
+  <div id="header-include"></div>
+
+  <!-- ✅ 메인 콘텐츠 -->
+  <main class="main-section">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>10년이 달라지는 선택</h1>
+        <p class="subtitle">제천 최초 10년 프리미엄 아파트</p>
+        <p class="subtext">제천루하스 더 카운티214</p>
+      </div>
+    </section>
+
+    <section class="showcase-fullscreen">
+      <div class="showcase-image-wrapper">
+        <img src="./assets/images/showcase1.png" class="fade-item delay-1" alt="포인트1">
+      </div>
+
+      <!-- 데스크탑용 이미지 -->
+      <div class="showcase-image-wrapper desktop-only">
+        <img src="./assets/images/showcase2.png" class="fade-item delay-2" alt="포인트2">
+      </div>
+      <div class="showcase-image-wrapper desktop-only">
+        <img src="./assets/images/showcase3.png" class="fade-item delay-3" alt="포인트3">
+      </div>
+
+      <!-- 모바일용 이미지 -->
+      <div class="showcase-image-wrapper mobile-only">
+        <img src="./assets/images/showcase2_m.png" class="fade-item delay-2" alt="모바일용 포인트2">
+      </div>
+      <div class="showcase-image-wrapper mobile-only">
+        <img src="./assets/images/showcase3_m.png" class="fade-item delay-3" alt="모바일용 포인트3">
+      </div>
+    </section>
+  </main>
+  <!-- ✅ 관심고객등록 플로팅 버튼 -->
+  <div id="floating-button-include"></div>
+
+
+  <!-- ✅ 푸터 불러오기 -->
+  <div id="footer-include"></div>
+
+  <!-- ✅ 헤더/푸터 삽입용 JS -->
+  <script>
+    async function loadComponent(id, path) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error("Fetch failed");
+        const html = await res.text();
+        document.getElementById(id).innerHTML = html;
+      } catch (err) {
+        console.error(`${path} 불러오기 실패:`, err);
+      }
+    }
+
+    loadComponent("header-include", "/components/header.html");
+    loadComponent("footer-include", "/components/footer.html");
+    loadComponent("floating-button-include", "/components/floating-button.html");
+
+
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-item').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

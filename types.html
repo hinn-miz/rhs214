@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>평형정보 | 제천루하스 더카운티214</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <style>
+    .desktop-only { display: block; }
+    .mobile-only { display: none; }
+
+    @media (max-width: 768px) {
+      .desktop-only { display: none; }
+      .mobile-only { display: block; }
+    }
+
+    .fade-item {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1.2s ease;
+    }
+
+    .fade-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.2s; }
+    .delay-2 { transition-delay: 0.4s; }
+    .delay-3 { transition-delay: 0.6s; }
+  </style>
+</head>
+<body>
+  <!-- ✅ 헤더 컴포넌트 -->
+  <div id="header-include"></div>
+
+  <main class="main-section">
+    <!-- 📐 평형정보 섹션: 이미지 3장 (PC + 모바일) -->
+    <section class="info-section" style="padding: 4rem 1.5rem; background-color: #f9f9f9;">
+      <div class="container" style="max-width: 1200px; margin: auto; display: block; padding: 0 1rem;">
+        <img src="/assets/images/type1.png" class="desktop-only fade-item delay-1" alt="평형 이미지1" style="width: 100%; border-radius: 12px; margin-bottom: 2rem;" />
+        <img src="/assets/images/type1_m.png" class="mobile-only fade-item delay-1" alt="평형 이미지1 모바일" style="width: 100%; border-radius: 12px; margin-bottom: 2rem;" />
+
+        <img src="/assets/images/type2.png" class="desktop-only fade-item delay-2" alt="평형 이미지2" style="width: 100%; border-radius: 12px; margin-bottom: 2rem;" />
+        <img src="/assets/images/type2_m.png" class="mobile-only fade-item delay-2" alt="평형 이미지2 모바일" style="width: 100%; border-radius: 12px; margin-bottom: 2rem;" />
+
+        <img src="/assets/images/type3.png" class="desktop-only fade-item delay-3" alt="평형 이미지3" style="width: 100%; border-radius: 12px;" />
+        <img src="/assets/images/type3_m.png" class="mobile-only fade-item delay-3" alt="평형 이미지3 모바일" style="width: 100%; border-radius: 12px;" />
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ 푸터 컴포넌트 -->
+  <div id="footer-include"></div>
+  <!-- ✅ 플로팅 버튼 컴포넌트 -->
+  <div id="floating-button-include"></div>
+
+  <!-- ✅ 공통 컴포넌트 JS 삽입 -->
+  <script>
+    async function loadComponent(id, path) {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error("Fetch failed");
+        const html = await res.text();
+        document.getElementById(id).innerHTML = html;
+      } catch (err) {
+        console.error(`${path} 불러오기 실패:`, err);
+      }
+    }
+
+    loadComponent("header-include", "/components/header.html");
+    loadComponent("footer-include", "/components/footer.html");
+    loadComponent("floating-button-include", "/components/floating-button.html");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-item').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<header class="site-header">
+  <div class="header-container">
+    <!-- 로고 이미지 -->
+    <div class="logo">
+      <a href="/">
+        <img src="/assets/images/logo_color.svg" alt="제천루하스 더카운티214 로고" style="height: 72px;" />
+      </a>
+    </div>
+
+    <!-- 가운데 메뉴 -->
+    <nav class="main-nav" id="mainNav">
+      <ul>
+        <li><a href="/about.html">사업안내</a></li>
+        <li><a href="/complex.html">단지안내</a></li>
+        <li><a href="/types.html">평형정보</a></li>
+        <li><a href="/location.html">오시는길</a></li>
+        <li><a href="/form.html">문의하기</a></li>
+      </ul>
+    </nav>
+
+    <!-- 우측 대표번호 (tel 링크 적용) -->
+<div class="contact-info">
+  <a href="tel:16666093" class="call-button">
+    전화문의 <strong>1666-6093</strong>
+  </a>
+</div>
+
+
+    <!-- 모바일 햄버거 버튼 -->
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </div>
+</header>
+
+<script>
+  const menuToggle = document.getElementById("menuToggle");
+  const mainNav = document.getElementById("mainNav");
+
+  menuToggle.addEventListener("click", () => {
+    mainNav.classList.toggle("active");
+  });
+</script>

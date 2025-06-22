@@ -1,0 +1,251 @@
+/* =======================
+   플로팅버튼
+======================= */
+.floating-btn {
+  position: fixed;
+  bottom: 3rem;
+  right: 4rem;
+  z-index: 999;
+  background-color: #012e47;
+  color: #fff;
+  padding: 0.7rem 1.6rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transition: background 0.3s ease;
+  animation: floatWiggle 3s ease-in-out infinite;
+}
+
+.floating-btn:hover {
+  background-color: #001d2f;
+}
+
+@keyframes floatWiggle {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+@media (max-width: 768px) {
+  .floating-btn {
+    bottom: 4rem;
+    right: 2rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+
+/* =======================
+   HEADER (헤더 스타일)
+======================= */
+
+/*헤더 메인침범 방지*/
+.main-section {
+  padding-top: 100px; /* ✅ 헤더 높이만큼 여백 확보 */
+}
+
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo img {
+  height: 72px;
+  display: block;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.call-button {
+  display: inline-block;
+  background-color: #002f4b;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.call-button strong {
+  font-weight: 700;
+}
+
+.call-button:hover {
+  background-color: #001f33;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    border-top: 1px solid #ddd;
+  }
+
+  .main-nav.active {
+    display: flex;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .main-nav li {
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-info {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+/* =======================
+   INDEX MAIN SECTION
+======================= */
+
+
+
+/* =======================
+   FOOTER (푸터 스타일)
+======================= */
+
+.site-footer {
+  background-color: #1a1a1a;
+  color: #eee;
+  padding: 2.5rem 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  max-width: 1200px;      /* ✅ 하단과 통일 */
+  margin: 0 auto;         /* ✅ 가운데 정렬 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+
+.footer-left,
+.footer-right {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo img {
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.footer-phone {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.footer-company p,
+.footer-meta p {
+  margin: 0.3rem 0;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.footer-top-align {
+  margin-bottom: 1rem;
+}
+
+.footer-meta {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.footer-meta {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.footer-disclaimer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+  font-size: 0.75rem;
+  color: #aaa;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-meta {
+    text-align: left;
+  }
+}
+
+  .footer-meta {
+    text-align: left;
+  }
+
+  .footer-logo img {
+    height: 48px;
+  }
+

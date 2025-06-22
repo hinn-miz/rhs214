@@ -1,0 +1,171 @@
+/* 공통 레이아웃 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+/* 폼 컨테이너 */
+.main-section {
+  padding-top: 100px; /* ✅ 헤더 높이에 따라 조정 가능 (기본 100px) */
+}
+
+.form-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* 타이틀 */
+.form-container h2 {
+  font-size: 2rem; /* ✅ 더 크게 */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+/* 라벨 */
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* 입력창 공통 */
+input[type="text"],
+input[type="tel"],
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* 텍스트에어리어 */
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* 체크박스 라벨 */
+.privacy-check label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 등록 버튼 */
+.submit-wrap {
+  text-align: center;
+}
+
+.submit-btn {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  background-color: #003f6f;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #001d2f;
+  transform: translateY(-2px); /* ✅ 살짝 떠오르는 효과 */
+}
+
+/* 개인정보 안내 섹션 */
+.privacy-table {
+  margin-top: 2rem;
+}
+
+.privacy-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.privacy-table th,
+.privacy-table td {
+  border: 1px solid #ccc;
+  padding: 0.6rem;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.privacy-note {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 1rem;
+}
+
+/* 반응형 대응 */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .privacy-table table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .privacy-check label {
+    font-size: 0.85rem;
+  }
+}
+
+/* 모달 */
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.modal-content p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.modal-content button {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.95rem;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
