@@ -41,6 +41,7 @@
    HEADER (헤더 스타일)
 ======================= */
 
+
 /*헤더 메인침범 방지*/
 .main-section {
   padding-top: 100px; /* ✅ 헤더 높이만큼 여백 확보 */
@@ -114,39 +115,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .main-nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    border-top: 1px solid #ddd;
-  }
 
-  .main-nav.active {
-    display: flex;
-  }
-
-  .main-nav ul {
-    flex-direction: column;
-    padding: 1rem;
-  }
-
-  .main-nav li {
-    margin-bottom: 0.75rem;
-  }
-
-  .contact-info {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
 
 
 /* =======================
