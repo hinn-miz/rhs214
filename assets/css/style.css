@@ -41,81 +41,118 @@
    HEADER (헤더 스타일)
 ======================= */
 
-
-/*헤더 메인침범 방지*/
-.main-section {
-  padding-top: 100px; /* ✅ 헤더 높이만큼 여백 확보 */
-}
-
-
+/* 헤더 영역 고정 및 기본 스타일 */
 .site-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: white;
-  border-bottom: 1px solid #eee;
+  background: white;
+  border-bottom: 1px solid #ddd;
   z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-family: 'Pretendard', sans-serif;
 }
 
+/* 헤더 내부 컨테이너 레이아웃 */
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
 }
 
-.logo img {
-  height: 72px;
-  display: block;
-}
-
+/* 메뉴 리스트 공통 스타일 */
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
+/* 메뉴 링크 공통 스타일 */
 .main-nav a {
   text-decoration: none;
-  color: #333;
-  font-size: 0.95rem;
+  color: #222;
+  font-size: 1rem;
   font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
 }
 
+/* 메뉴 링크 hover 효과 */
+.main-nav a:hover {
+  background: #f0f4f8;
+  color: #00548c;
+}
+
+/* 대표번호 버튼 기본 스타일 */
 .call-button {
   display: inline-block;
-  background-color: #002f4b;
+  background: linear-gradient(to right, #00548c, #007ab8);
   color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  border-radius: 20px;
   text-decoration: none;
-  white-space: nowrap;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 
-.call-button strong {
-  font-weight: 700;
-}
-
+/* 대표번호 버튼 hover 효과 */
 .call-button:hover {
-  background-color: #001f33;
+  background: linear-gradient(to right, #007ab8, #0096db);
+  box-shadow: 0 4px 10px rgba(0, 122, 184, 0.3);
+  transform: translateY(-1px);
 }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+/* =======================
+   모바일 반응형 대응
+======================= */
+
+@media (max-width: 768px) {
+  /* 모바일에서 메뉴가 로고를 침범하지 않게 약간 아래로 */
+  .main-nav {
+    margin-top: 1.5rem;
+  }
+
+  /* 모바일 대표번호 버튼 가운데 정렬 */
+  .contact-info {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .call-button {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1.2rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+  }
 }
 
-
+/* =======================
+   공통 본문 침범 방지
+======================= */
+.main-section {
+  padding-top: 220px; /* PC 기준 기본 헤더 높이 */
+}
+/* form.html에만 적용되도록 */
+@media (max-width: 768px) {
+body.form-page .main-section {
+  padding-top: 300px; /* 헤더 높이보다 여유 있게 설정 */
+}
 
 
 /* =======================

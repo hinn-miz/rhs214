@@ -1,4 +1,9 @@
 /* 공통 레이아웃 */
+
+.main-section {
+  padding-top: 220px; /* PC 기준 기본 헤더 높이 */
+}
+
 body {
   font-family: 'Noto Sans KR', sans-serif;
   line-height: 1.6;
